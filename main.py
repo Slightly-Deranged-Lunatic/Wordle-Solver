@@ -57,7 +57,6 @@ def filter_grey_letters(hints, possible_words):
                 possible_words.remove(word)
                 break
     return possible_words
+
 if __name__ == "__main__":
     main()
-
-bigger test

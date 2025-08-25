@@ -11,15 +11,14 @@ This repo is currently not accepting any contributions, sorry!
 
 Installation
 ---
-1. Download the provided wordle-solver.zip from the latest [release](https://github.com/Slightly-Deranged-Lunatic/wordle-solver/releases/)
-
-2. Download the repo with `git clone https://github.com/Slightly-Deranged-Lunatic/wordle-solver` (Requires git)
-
+1. Make sure you have python installed
+   1.1 This can be done by running `python --version`
+   1.2 If you don't have it installed, you can download it from [their website](https://www.python.org/downloads/)
+2. Simply download the provided wordle-solver.zip from the latest [release](https://github.com/Slightly-Deranged-Lunatic/wordle-solver/releases/)
 Usage
 ---
-1. Make sure you have python installed
-2. Run main.py
-3. Follow the prompts in the terminal
+1. Run main.py
+2. Follow the prompts in the terminal
 
 Credits
 ---

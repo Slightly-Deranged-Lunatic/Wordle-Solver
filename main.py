@@ -8,6 +8,7 @@ def main():
         print(word, end=", ")
 
 def get_hints():
+    # User input to get all the hints for the word
     while True:
         green_letters = list(input("Enter all green letters you know so far, use underscores to show none ").lower().strip())
         green_letters = add_dummy_input(green_letters)
@@ -26,7 +27,7 @@ def get_hints():
             break
 
     while True:
-        grey_letters = list(input("Enter all letters without a color. ").lower().strip())
+        grey_letters = list(input("Enter all grey letters. ").lower().strip())
         grey_letters = add_dummy_input(grey_letters)
         if is_valid_input(grey_letters, length_check = False):
             break
@@ -37,6 +38,14 @@ def get_hints():
         "grey letters" : grey_letters
     }
     return hints
+
+def get_word(hints):
+    # Returns all possible words
+    possible_words = list(words)
+    possible_words = filter_grey_letters(hints, possible_words)
+    possible_words = filter_green_letters(hints, possible_words)
+    possible_words = filter_yellow_letters(hints, possible_words)
+    return possible_words
 
 def add_dummy_input(letter_list):
     if letter_list == []:
@@ -50,61 +59,72 @@ def is_valid_input(user_input, length_check = True):
         if len(user_input) != 5:
             print("Not enough characters, please try again.")
             return False
+
     for i in user_input:
         if i not in WHITELISTED_LETTERS:
             print(f"Unaccepted input {i}, please try again.")
             return False
     return True
 
-def get_word(hints):
-    possible_words = list(words)
-    possible_words = filter_grey_letters(hints, possible_words)
-    possible_words = filter_green_letters(hints, possible_words)
-    possible_words = filter_yellow_letters(hints, possible_words)
-    return possible_words
-
 def filter_green_letters(hints, possible_words):
+    # Filters out possible words using green letters
     green_letters = hints["green letters"]
     new_words = list(possible_words)
     for word in possible_words:
-        for i in range(len(word)):
-            if word[i] != green_letters[i] and green_letters[i] != "_":
-                new_words.remove(word)
-                break
+        to_remove = remove_green_letters(green_letters, word)
+        if to_remove:
+            new_words.remove(possible_words)
     return new_words
 
+def remove_green_letters(green_letters, word):
+    # Checks to see if the word has green letters in the right position
+    for i in range(len(word)):
+        if word[i] != green_letters[i] and green_letters[i] != "_":
+            return True
+
+def filter_grey_letters(hints, possible_words):
+    # Filters out possible words using green letters
+    grey_letters = hints["grey letters"]
+    new_words = list(possible_words)
+    for word in possible_words:
+        to_remove = remove_grey_letters(grey_letters, word)
+        if to_remove:
+            new_words.remove(word)
+    return new_words
+
+def remove_grey_letters(grey_letters, word):
+    # Checks to see if the word contains a grey letter
+    for letter in word:
+        if letter in grey_letters:
+            return True
+
 def filter_yellow_letters(hints, possible_words):
+    # Filters out possible words using green letters
     yellow_letters = hints["yellow letters"]
     new_words = list(possible_words)
     for word in possible_words:
-        for row in yellow_letters:
-            for yellow_letter in row:
-                if yellow_letter not in word and yellow_letter != "_":
-                    new_words.remove(word)
-                    break
-            if word not in new_words:
-                break
-        if word not in new_words:
-            continue
-        for i in range(len(word)):
-            for row in yellow_letters:
-                if word[i] == row[i]:
-                    new_words.remove(word)
-                    break
-            if word not in new_words:
-                break
-        if word not in new_words:
-            continue
+        to_remove = remove_yellow_letter(yellow_letters, word)
+        if not to_remove:
+            to_remove = check_yellow_letter_position(yellow_letters, word)
+        if to_remove:
+            new_words.remove(word)
     return new_words
 
-def filter_grey_letters(hints, possible_words):
-    grey_letters = hints["grey letters"]
-    for word in words:
-        for letter in word:
-            if letter in grey_letters:
-                possible_words.remove(word)
-                break
-    return possible_words
+def remove_yellow_letter(yellow_letters, word):
+    # Checks to see if the word doesn't have a yellow letter in it at all
+    for row in yellow_letters:
+        for yellow_letter in row:
+            if yellow_letter not in word and yellow_letter != "_":
+                return True
+    return False
+
+def check_yellow_letter_position(yellow_letters, word):
+    # Checks to see if the positions of the yellow letter input and yellow letters in word are the same 
+    for i in range(len(word)):
+        for row in yellow_letters:
+            if word[i] == row[i]:
+                return True
+    return False
 
 if __name__ == "__main__":
     main()

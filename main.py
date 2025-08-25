@@ -73,7 +73,7 @@ def filter_green_letters(hints, possible_words):
     for word in possible_words:
         to_remove = remove_green_letters(green_letters, word)
         if to_remove:
-            new_words.remove(possible_words)
+            new_words.remove(word)
     return new_words
 
 def remove_green_letters(green_letters, word):

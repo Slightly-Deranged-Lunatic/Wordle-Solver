@@ -12,7 +12,7 @@ This repo is currently not accepting any contributions, sorry!
 1. Make sure you have python installed
    - This can be done by running `python --version`
    - If you don't have it installed, you can download it from [their website](https://www.python.org/downloads/)
-2. Simply download the provided wordle-solver.zip from the latest [release](https://github.com/Slightly-Deranged-Lunatic/wordle-solver/releases/)
+2. Simply download and extract the provided wordle-solver.zip from the latest [release](https://github.com/Slightly-Deranged-Lunatic/wordle-solver/releases/)
 
 # Usage
 1. Run main.py

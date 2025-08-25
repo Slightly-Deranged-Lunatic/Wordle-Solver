@@ -7,6 +7,7 @@ Due to there being no official words list for Wordle that I could get, this prog
 
 This code was written by a novice, however, I am quite proud of what I have wrote given my knowledge
 
+This repo is currently not accepting any contributions, sorry!
 
 Installation
 ---

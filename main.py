@@ -9,7 +9,7 @@ def main():
 
 def get_hints():
     while True:
-        green_letters = list(input("Enter all green letters you know so far, use a space to show none ").lower().strip())
+        green_letters = list(input("Enter all green letters you know so far, use underscores to show none ").lower().strip())
         green_letters = add_dummy_input(green_letters)
         if is_valid_input(green_letters):
             break
@@ -17,7 +17,7 @@ def get_hints():
     yellow_letters = []
     row_counter = 1
     while True:
-        new_yellow_letters = list(input(f"Enter the yellow letters for row {row_counter}, use spaces to show no letters, and press enter if none ").lower().strip())
+        new_yellow_letters = list(input(f"Enter the yellow letters for row {row_counter}, use underscores to show no letters, and press enter if none ").lower().strip())
         new_yellow_letters = add_dummy_input(new_yellow_letters)
         if is_valid_input(new_yellow_letters):
             yellow_letters.append(new_yellow_letters)

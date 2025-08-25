@@ -14,6 +14,12 @@ Installation
 
 2. Download the repo with `git clone https://github.com/Slightly-Deranged-Lunatic/wordle-solver` (Requires git)
 
+Usage
+---
+1. Make sure you have python installed
+2. Run main.py
+3. Follow the prompts in the terminal
+
 Credits
 ---
 Words list thanks to [tabatkins](https://github.com/tabatkins) from [wordle-list](https://github.com/tabatkins/wordle-list)

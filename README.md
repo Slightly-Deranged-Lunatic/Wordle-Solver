@@ -17,4 +17,5 @@ Installation
 Credits
 ---
 Words list thanks to [tabatkins](https://github.com/tabatkins) from [wordle-list](https://github.com/tabatkins/wordle-list)
+
 All code written by [Slightly Deranged Lunatic](https://github.com/Slightly-Deranged-Lunatic)

@@ -9,7 +9,7 @@ def main():
     print("Possible words are:", end =" ")
     for word in possible_answers:
         print(word, end=", ")
-        close_program()
+    close_program()
 
 def get_hints():
     # User input to get all the hints for the word

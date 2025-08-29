@@ -3,14 +3,18 @@ from words_list import words
 def main():
     hints = get_hints()
     possible_answers = get_word(hints)
-    print("Possible words are:", end=" ")
+    if len(possible_answers) == 0:
+        print("You messed up somewhere or the word just isn't in the dictionary at all.", end = " ")
+        close_program()
+    print("Possible words are:", end =" ")
     for word in possible_answers:
         print(word, end=", ")
+        close_program()
 
 def get_hints():
     # User input to get all the hints for the word
     while True:
-        green_letters = list(input("Enter all green letters you know so far, use underscores to show none ").lower().strip())
+        green_letters = list(input("Enter all green letters you know so far, use underscores to show none and press enter if none: ").lower().strip())
         green_letters = add_dummy_input(green_letters)
         if is_valid_input(green_letters):
             break
@@ -18,7 +22,7 @@ def get_hints():
     yellow_letters = []
     row_counter = 1
     while True:
-        new_yellow_letters = list(input(f"Enter the yellow letters for row {row_counter}, use underscores to show no letters, and press enter if none ").lower().strip())
+        new_yellow_letters = list(input(f"Enter the yellow letters for row {row_counter}, use underscores to show no letters, and press enter if none: ").lower().strip())
         new_yellow_letters = add_dummy_input(new_yellow_letters)
         if is_valid_input(new_yellow_letters):
             yellow_letters.append(new_yellow_letters)
@@ -27,7 +31,7 @@ def get_hints():
             break
 
     while True:
-        grey_letters = list(input("Enter all grey letters. ").lower().strip())
+        grey_letters = list(input("Enter all grey letters: ").lower().strip())
         grey_letters = add_dummy_input(grey_letters)
         if is_valid_input(grey_letters, length_check = False):
             break
@@ -125,6 +129,10 @@ def check_yellow_letter_position(yellow_letters, word):
             if word[i] == row[i]:
                 return True
     return False
+
+def close_program():
+    termination = input("\nPress enter when you are ready to close the program.")
+    raise SystemExit
 
 if __name__ == "__main__":
     main()

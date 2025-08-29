@@ -87,7 +87,7 @@ def remove_green_letters(green_letters, word):
             return True
 
 def filter_grey_letters(hints, possible_words):
-    # Filters out possible words using green letters
+    # Filters out possible words using grey letters
     grey_letters = hints["grey letters"]
     new_words = list(possible_words)
     for word in possible_words:
@@ -103,7 +103,7 @@ def remove_grey_letters(grey_letters, word):
             return True
 
 def filter_yellow_letters(hints, possible_words):
-    # Filters out possible words using green letters
+    # Filters out possible words using yellow letters
     yellow_letters = hints["yellow letters"]
     new_words = list(possible_words)
     for word in possible_words:
